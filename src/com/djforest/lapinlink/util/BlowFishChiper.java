@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.SecureRandom;
+
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
@@ -19,16 +20,16 @@ import android.media.AudioTrack;
 import android.util.Base64;
 import android.util.Log;
 
-public class AesChiper implements Runnable {
+public class BlowFishChiper implements Runnable {
     private final String LOG_TAG = "com.djforest.lapinlink.util.AesChiper";
-    private final String ALGORITHM = "AES";
-    private final String CHIPER_TYPE = "AES/CBC/PKCS5Padding"; // 受け渡す文字列は アルゴリズム/モード/パディング の形式で
+    private final String ALGORITHM = "Blowfish";
+    private final String CHIPER_TYPE = "Blowfish/CBC/PKCS5Padding"; // 受け渡す文字列は アルゴリズム/モード/パディング の形式で
     private final String mCryptSeed;
     private AudioTrack mAudioTrack;
     private Thread mThread;
     private byte[] mByteData;
 
-    public AesChiper(String _CryptSeed) {
+    public BlowFishChiper(String _CryptSeed) {
         this.mCryptSeed = _CryptSeed;
     }
     /**
