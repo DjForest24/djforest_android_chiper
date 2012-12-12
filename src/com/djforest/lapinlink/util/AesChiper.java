@@ -37,7 +37,7 @@ public class AesChiper implements Runnable {
      * @return byte[]
      * @throws Exception
      */
-    public byte[] encryptTextToBytes(String plainText) throws Exception {
+    public byte[] encryptToBytes(String plainText) throws Exception {
         byte[] rawKey = getRawKey(this.mCryptSeed.getBytes());
         byte[] encrypted = encrypt(rawKey, plainText.getBytes());
         return encrypted;
@@ -50,7 +50,7 @@ public class AesChiper implements Runnable {
      * @return String
      * @throws Exception
      */
-    public String encryptTextToString(String plainText) throws Exception {
+    public String encryptToString(String plainText) throws Exception {
         byte[] rawKey = getRawKey(this.mCryptSeed.getBytes());
         byte[] encrypted = encrypt(rawKey, plainText.getBytes());
         return Base64.encodeToString(encrypted, Base64.DEFAULT);
@@ -63,7 +63,7 @@ public class AesChiper implements Runnable {
      * @return byte[]
      * @throws Exception
      */
-    public byte[] encryptImageToBytes(Bitmap bitmap) throws Exception {
+    public byte[] encryptToBytes(Bitmap bitmap) throws Exception {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(CompressFormat.JPEG, 100, baos);
         byte[] bytesImage = baos.toByteArray();
@@ -85,7 +85,7 @@ public class AesChiper implements Runnable {
      * @return byte[]
      * @throws Exception
      */
-    public byte[] encryptFileToBytes(File file) throws Exception {
+    public byte[] encryptToBytes(File file) throws Exception {
         byte[] rawKey = getRawKey(this.mCryptSeed.getBytes());
         byte [] byteArray = new byte[(int) file.length()];
         FileInputStream in = null;
@@ -110,7 +110,7 @@ public class AesChiper implements Runnable {
      * @return String
      * @throws Exception
      */
-    public String decryptTextToString(String encryptedText) throws Exception {
+    public String decryptToString(String encryptedText) throws Exception {
         byte[] rawKey = getRawKey(this.mCryptSeed.getBytes());
         byte[] enc = Base64.decode(encryptedText.getBytes(), Base64.DEFAULT);
         byte[] decrypted = decrypt(rawKey, enc);
@@ -124,7 +124,7 @@ public class AesChiper implements Runnable {
      * @return String
      * @throws Exception
      */
-    public String decryptBytesToString(byte[] encryptedBytes) throws Exception {
+    public String decryptToString(byte[] encryptedBytes) throws Exception {
         byte[] rawKey = getRawKey(this.mCryptSeed.getBytes());
         byte[] decrypted = decrypt(rawKey, encryptedBytes);
         return new String(decrypted);
@@ -138,7 +138,7 @@ public class AesChiper implements Runnable {
      * @return Bitmap
      * @throws Exception
      */
-    public Bitmap decryptStringToBitmap(String encryptedText) throws Exception {
+    public Bitmap decryptToBitmap(String encryptedText) throws Exception {
         byte[] rawKey = getRawKey(this.mCryptSeed.getBytes());
         byte[] enc = Base64.decode(encryptedText.getBytes(), Base64.DEFAULT);
         byte[] result = decrypt(rawKey, enc);
@@ -159,7 +159,7 @@ public class AesChiper implements Runnable {
      * @return byte[]
      * @throws Exception
      */
-    public byte[] decryptBytesToBytes(byte[] encryptedBytes) throws Exception {
+    public byte[] decryptToBytes(byte[] encryptedBytes) throws Exception {
         byte[] rawKey = getRawKey(this.mCryptSeed.getBytes());
         byte[] decrypted = decrypt(rawKey, encryptedBytes);
         return decrypted;
@@ -173,7 +173,7 @@ public class AesChiper implements Runnable {
      * @return Bitamp
      * @throws Exception
      */
-    public Bitmap decryptBytesToBitmap(byte[] encryptedBytes) throws Exception {
+    public Bitmap decryptToBitmap(byte[] encryptedBytes) throws Exception {
         byte[] rawKey = getRawKey(this.mCryptSeed.getBytes());
         byte[] result = decrypt(rawKey, encryptedBytes);
         BitmapFactory.Options options = new BitmapFactory.Options();
@@ -193,7 +193,7 @@ public class AesChiper implements Runnable {
      * @return byte[]
      * @throws Exception
      */
-    public byte[] decryptFileToBytes(File file) throws Exception {
+    public byte[] decryptToBytes(File file) throws Exception {
         byte[] rawKey = getRawKey(this.mCryptSeed.getBytes());
         byte [] encryptedByteArray = new byte[(int) file.length()];
         FileInputStream in = null;
@@ -217,7 +217,7 @@ public class AesChiper implements Runnable {
      * @return Bitmap
      * @throws Exception
      */
-    public Bitmap decryptFileToBitmap(File file) throws Exception {
+    public Bitmap decryptToBitmap(File file) throws Exception {
         byte[] rawKey = getRawKey(this.mCryptSeed.getBytes());
         byte [] encryptedByteArray = new byte[(int) file.length()];
         FileInputStream in = null;
