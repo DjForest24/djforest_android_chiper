@@ -1,6 +1,7 @@
 # DjForest Android Chiper
 
-Android用データ暗号化/複合化ライブラリです。byte、Stringの他Bitmap、File、Audio等Androidで頻繁に使用されるデータを簡単な手順で暗号化/複合化できるようにしました。
+Android用データ暗号化/複合化ライブラリです。byte、Stringの他Bitmap、File、Audio等Androidで頻繁に使用されるデータを簡単な手順で暗号化/複合化できるようにしました。    
+対応暗号タイプ :AES,Blowfish
 
 ## 使いかた
 
@@ -30,7 +31,6 @@ String encrypted = aes.encryptToString("plainText");
 以上の手順で[encrypted]には暗号化された情報がセットされます。
  
 ## LICENSE
-----------
 Copyright &copy; 2012 DjForest
 Licensed under the [Apache License, Version 2.0][Apache]
  
